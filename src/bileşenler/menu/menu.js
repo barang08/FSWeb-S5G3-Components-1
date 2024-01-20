@@ -10,6 +10,29 @@ let menuElemanlari = [
   "Diğer",
 ];
 
+const menuYapici = (menuList) => {
+  const menu = document.createElement("div")
+  menu.classList.add("menu")
+  const ul = document.createElement("ul")
+  menu.appendChild(ul);
+
+  menuList.forEach((element) => {
+    const li = document.createElement("li")
+    li.textContent = element;
+    ul.appendChild(li)
+  })
+  return menu;
+}
+
+const menuLocation = document.querySelector(".header")
+const tehMenu = menuYapici(menuElemanlari)
+menuLocation.appendChild(tehMenu)
+
+const button = document.querySelector(".menu-button")
+button.addEventListener("click", () => {
+  tehMenu.classList.toggle("menu--open")
+})
+
 /*
   Adım 1: Aşağıdaki etiketler gibi bir menü oluşturmak için 'menuYapici' adlı bir bileşen yazın:
 
@@ -21,7 +44,7 @@ let menuElemanlari = [
 
   'menuYapici' fonksiyonu tek argümanı olarak bir menü elemanları dizisini alır (birinci parametre).
 */
-const menuYapici = (menuList) => {
+/*const menuYapici = (menuList) => {
   const menu = document.createElement("div");
   menu.classList.add("menu");
   const ul = document.createElement("ul");

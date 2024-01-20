@@ -104,7 +104,56 @@ Adım 1: Haber oluşturmak için 'haberYapici' adında bir bileşen(component) o
     <button class="expandButton">+</button>
   </div>
 */
+
 const haberYapici = (haber) => {
+  const haberDiv = document.createElement("div");
+  haberDiv.classList.add("article")
+  const haberItem = ` <h2>${haber.baslik}</h2>
+  <p class = "tarih">${haber.tarih}</p>
+  <p >${haber.ilkParagraf}</p>
+  <p >${haber.ikinciParagraf}</p>
+  <p >${haber.ucuncuParagraf}</p>
+  <button class="expandButton">+</button
+  `
+  haberDiv.innerHTML = haberItem;
+
+  const expandButton = haberDiv.querySelector(".expandButton")
+  expandButton.addEventListener("click", () => {
+    haberDiv.classList.toggle("article-open")
+  })
+
+  return haberDiv
+};
+
+const haberTasiyici = document.querySelector(".articles")
+data.map((haber) => {
+  const haberItem = haberYapici(haber);
+
+  haberTasiyici.appendChild(haberItem);
+})
+
+
+
+
+
+
+
+
+
+/*
+  Adım 2: Hala `haberYapici` içindeyiz, button.expandButton 'a bir click event dinleyici ekleyin.
+  Bu dinleyici div.article öğesine 'article-open' class'ını ekleyip/çıkaracak (toogle).
+
+  Adım 3: Fonksiyonunuzdan bir öğe döndürmeyi unutmayın.
+
+  Adım 4: Fonksiyonunuzun dışında, tüm datayı döngüye sokun(loop). Bir div.article öğesi oluşturmak ve bunu div.articles içindeki DOM'a eklemek için
+  her yinelemede oluşturduğunuz bileşeninizi kullanacaksınız(bknz. index.html).
+
+  Adım 5: Veri dizisine yeni haber nesnesi eklemeyi deneyin. Diğer verilerle aynı yapıda olmasına dikkat edin.
+  Eklediğiniz yeni haberi görmek için sayfayı yenileyin.
+*/
+
+/*const haberYapici = (haber) => {
   const haberDiv = document.createElement("div");
   haberDiv.classList.add("article");
   const haberItem = `<h2>${haber.baslik}</h2>
@@ -131,26 +180,4 @@ data.map((haber) => {
 
   haberTasiyici.appendChild(haberItem);
 });
-
-
-
-
-
-
-
-
-
-
-/*
-  Adım 2: Hala `haberYapici` içindeyiz, button.expandButton 'a bir click event dinleyici ekleyin.
-  Bu dinleyici div.article öğesine 'article-open' class'ını ekleyip/çıkaracak (toogle).
-
-  Adım 3: Fonksiyonunuzdan bir öğe döndürmeyi unutmayın.
-
-  Adım 4: Fonksiyonunuzun dışında, tüm datayı döngüye sokun(loop). Bir div.article öğesi oluşturmak ve bunu div.articles içindeki DOM'a eklemek için
-  her yinelemede oluşturduğunuz bileşeninizi kullanacaksınız(bknz. index.html).
-
-  Adım 5: Veri dizisine yeni haber nesnesi eklemeyi deneyin. Diğer verilerle aynı yapıda olmasına dikkat edin.
-  Eklediğiniz yeni haberi görmek için sayfayı yenileyin.
 */
-
